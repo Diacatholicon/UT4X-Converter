@@ -5,8 +5,8 @@
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/dec0f1a5176748a29195c99d7862339f)](https://app.codacy.com/manual/xtremexp/UT4X-Converter?utm_source=github.com&utm_medium=referral&utm_content=xtremexp/UT4X-Converter&utm_campaign=Badge_Grade_Settings)
 
 
-* Version: 1.0.0
-* Release date: 22/02/2020
+* Version: 1.0.1
+* Release date: 08/05/2020
 * Author: Thomas 'XtremeXp/WinterIsComing' P.
 * Download: [UT Forums](https://www.epicgames.com/unrealtournament/forums/unreal-tournament-development/ut-development-level-design/9285)
 * Source Code: [GitHub-UT4X Converter](https://github.com/xtremexp/UT4X-Converter)
@@ -176,19 +176,24 @@ Note:
 
 ## How to build and run latest version ?
 
-- Download and install OpenJDK13: 
+- Download (https://jdk.java.net/14/) and decompress OpenJDK14 to any folder of your choice
 
-- Download and install JavaFX SDK: https://gluonhq.com/products/javafx/
-
+At javafx website (https://gluonhq.com/products/javafx/) :
+- Download and decompress "JavaFX <Windows/Linux> x64 SDK" to any folder of your choice 
+- Download and install "JavaFX <Windows/Linux> x86 jmods" and decompress the .jmod files into <JDK14_PATH>/jmods
   
 
-### With [IntelliJ IDEA](https://www.jetbrains.com/idea/) (not-free):
+### With [IntelliJ IDEA](https://www.jetbrains.com/idea/) (not-free or free for 30 days):
 
 Retrieve project :
 
 - File -> New -> Project from Version Control -> Git
 - Set "Git Repository URL" to: "https://github.com/xtremexp/UT4X-Converter"
 - Click on "Clone"
+
+Configure JavaFX:
+- Go to "File" -> "Settings" -> "Appearance & behaviour" -> "Path Variables"
+- Add a variable named "PATH_TO_FX" and set to "<JAVAFX_14PATH>\lib"	(e.g: C:\dev\javafx-sdk-14.0.1\lib")
 
 Build and Run :
 
@@ -267,6 +272,11 @@ Optional (UI editing) :
 ---
 
 ## History
+- 1.0.1 - TBD
+  * all: textures are now exported to .png instead of .tga (=overall texture quality improved).
+  * ui: alignment fixes
+  * tech: migrated from Java 13 to Java 14
+  * tech: migrated from Java FX 13 to Java FX 14
 
 - 1.0.0 - 22/02/2020
   * ut3: added support for terrain conversion

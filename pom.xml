@@ -11,9 +11,9 @@
 	<name>UT4 Converter</name>
 
 	<properties>
-		<java.version>13</java.version>
+		<java.version>14</java.version>
 		<maven.compiler.release>${java.version}</maven.compiler.release>
-		<javafx.version>13</javafx.version>
+		<javafx.version>14</javafx.version>
 		<slf4j.version>1.7.29</slf4j.version>
 		<log4j.version>2.12.1</log4j.version>
 		<jaxb.version>2.2.11</jaxb.version>
@@ -35,7 +35,7 @@
 				<artifactId>maven-compiler-plugin</artifactId>
 				<version>3.8.1</version>
 				<configuration>
-					<release>13</release>
+					<release>14</release>
                 </configuration>
 			</plugin>
 
@@ -182,65 +182,51 @@
 							<goal>exec</goal>
 						</goals>
 						<configuration>
-							<executable>${java.home}/bin/jpackager</executable>
+							<executable>${java.home}/bin/jpackage</executable>
 							<workingDirectory>${project.build.directory}</workingDirectory>
 							<longModulepath>false</longModulepath>
 							<environmentVariables>
 								<JAVA_HOME>${java.home}</JAVA_HOME>
 							</environmentVariables>
 							<arguments>
+								<argument>--type</argument>
+								<argument>msi</argument>
+
 								<!-- packager arguments -->
-								<!-- <argument>create-image</argument> -->
-								<argument>create-installer</argument>
 								<argument>--verbose</argument>
-								<argument>--echo-mode</argument>
+
+								<argument>--name</argument>
+								<argument>${project.artifactId}</argument>
+
+								<argument>--copyright</argument>
+								<argument>You are free to distribute and use with tool but with no commercial use</argument>
+
+								<argument>--vendor</argument>
+								<argument>Thomas P.</argument>
+
+								<argument>--app-version</argument>
+								<argument>${project.version}</argument>
+
+								<argument>--description</argument>
+								<argument>Tool that helps converting maps from Unreal 1, Unreal 2, Unreal Tournament (1999), Unreal Tournament 2003/4, Unreal Tournament 3 to Unreal Tournament 4 (UT2005)</argument>
+
 								<argument>--input</argument>
 								<argument>${project.build.directory}/libs</argument>
 
-								<argument>--class</argument>
+								<argument>--main-class</argument>
 								<argument>org.xtx.ut4converter.MainApp</argument>
 
 								<argument>--main-jar</argument>
 								<argument>./${project.artifactId}-${project.version}.jar</argument>
 
-								<argument>--output</argument>
+								<argument>--dest</argument>
 								<argument>package</argument>
-
-								<argument>--identifier</argument>
-								<argument>org.xtx.ut4converter</argument>
-
-								<argument>--version</argument>
-								<argument>${project.version}</argument>
-
-								<argument>--name</argument>
-								<argument>${project.artifactId}</argument>
-
-								<argument>--description</argument>
-								<argument>Tool that helps converting maps from Unreal 1, Unreal 2, Unreal Tournament (1999), Unreal Tournament 2003/4, Unreal Tournament 3 to Unreal Tournament 4 (UT2005)</argument>
-
-								<!--  Prevents multiple instances of the application from launching -->
-								<argument>--singleton</argument>
-
-								<argument>--vendor</argument>
-								<argument>Thomas P.</argument>
-
-								<argument>--copyright</argument>
-								<argument>You are free to distribute and use with tool but with no commercial use</argument>
-
-								<argument>--identifier</argument>
-								<argument>org.xtx.ut4converter</argument>
-
-								<argument>--category</argument>
-								<argument>Tool</argument>
-
-								<argument>--win-registry-name</argument>
-								<argument>${project.artifactId}</argument>
-
-								<!-- FOR INSTALL, ONLY do it for current user and not all -->
-								<argument>--win-per-user</argument>
 
                                 <argument>--win-dir-chooser</argument>
 								<argument>--win-shortcut</argument>
+
+								<argument>--win-upgrade-uuid</argument>
+								<argument>62badfac-5664-495a-9878-7e900e596b64</argument>
 
 								<!-- jlink arguments -->
 								<argument>--module-path</argument>
